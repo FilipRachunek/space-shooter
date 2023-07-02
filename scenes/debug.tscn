@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://01ldear5ava2"]
+
+[ext_resource type="FontFile" uid="uid://bjlvc3ca27vg3" path="res://fonts/SourceSansPro-Regular.ttf" id="1_gyu3n"]
+[ext_resource type="Script" path="res://scenes/debug.gd" id="2_6nstx"]
+
+[node name="debug" type="Label"]
+theme_override_fonts/font = ExtResource("1_gyu3n")
+theme_override_font_sizes/font_size = 24
+script = ExtResource("2_6nstx")

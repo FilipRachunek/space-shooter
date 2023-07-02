@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://02pmpey6arns"]
+
+[ext_resource type="Script" path="res://scenes/small_star.gd" id="1_itkdu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_350dx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_doslx"]
+material = SubResource("StandardMaterial3D_350dx")
+radius = 1.0
+radial_segments = 16
+rings = 1
+is_hemisphere = true
+
+[node name="small_star" type="Node3D" groups=["small_star"]]
+script = ExtResource("1_itkdu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_doslx")
