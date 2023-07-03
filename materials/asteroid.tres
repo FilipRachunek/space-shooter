@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cao667aotu0nh"]
+
+[ext_resource type="Texture2D" uid="uid://dty748elsbkiq" path="res://materials/asteroid_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://brgyu4ly14o7b" path="res://materials/asteroid_normal.png" id="3"]
+
+[resource]
+albedo_texture = ExtResource("1")
+roughness = 0.95
+normal_enabled = true
+normal_texture = ExtResource("3")

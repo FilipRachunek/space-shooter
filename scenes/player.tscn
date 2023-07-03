@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://77c4ijjom8fn"]
+[gd_scene load_steps=17 format=3 uid="uid://77c4ijjom8fn"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_3xfdo"]
 [ext_resource type="Texture2D" uid="uid://2rtvrcyp3lr0" path="res://models/player_palette.png" id="1_s21bw"]
+[ext_resource type="Script" path="res://scenes/weapon.gd" id="3_xoa0m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aar71"]
 resource_name = "Material"
@@ -175,6 +176,7 @@ shadow_mesh = SubResource("ArrayMesh_3fx2s")
 radius = 3.0
 
 [node name="player" type="CharacterBody3D"]
+collision_mask = 16
 script = ExtResource("1_3xfdo")
 
 [node name="Body" type="MeshInstance3D" parent="."]
@@ -204,3 +206,34 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_lr6kh")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 42
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_lr6kh")
+
+[node name="Weapons" type="Node3D" parent="."]
+
+[node name="Main" type="Node3D" parent="Weapons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.03793)
+script = ExtResource("3_xoa0m")
+
+[node name="Directoion" type="Node3D" parent="Weapons/Main"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Left" type="Node3D" parent="Weapons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.10457, 0, -1.0855)
+script = ExtResource("3_xoa0m")
+
+[node name="Directoion" type="Node3D" parent="Weapons/Left"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="Right" type="Node3D" parent="Weapons"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.105, 0, -1.085)
+script = ExtResource("3_xoa0m")
+
+[node name="Directoion" type="Node3D" parent="Weapons/Right"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

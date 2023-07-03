@@ -11,6 +11,8 @@ var frame_time = 0
 var VRAM = 0
 var player
 var small_star_count = 0
+var enemy_count = 0
+var bullet_count = 0
 
 # This function will be called after the player is added.
 func init(_player):
@@ -26,11 +28,15 @@ func _process(delta):
 	frame_time = delta
 	VRAM = RenderingServer.get_rendering_info(v) / 1024.0 / 1024.0
 	small_star_count = get_tree().get_nodes_in_group("small_star").size()
+	enemy_count = get_tree().get_nodes_in_group("enemy").size()
+	bullet_count = get_tree().get_nodes_in_group("bullet").size()
 	var data = "FPS: " + str(FPS) + "\n" + \
 		"Draw calls: " + str(draw_calls) + "\n" + \
 		"Frame time: " + str(frame_time) + "\n" + \
 		"VRAM: " + str(VRAM) + "\n" + \
-		"Small stars: " + str(small_star_count) + "\n"
+		"Small stars: " + str(small_star_count) + "\n" + \
+		"Enemies: " + str(enemy_count) + "\n" + \
+		"Bullets: " + str(bullet_count) + "\n"
 	if Utils.is_valid_node(player):
 		data += "Position: " + str(player.global_position) + "\n" + \
 		"Rotation: " + str(player.rotation)

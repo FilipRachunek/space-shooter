@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Utils="*res://autoload/utils.gd"
 GameManager="*res://autoload/game_manager.gd"
+SoundManager="*res://autoload/sound_manager.tscn"
 
 [display]
 
@@ -48,5 +49,10 @@ move_down={
 move_right={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"echo":false,"script":null)
+]
+}
+shoot_primary={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(145, 13),"global_position":Vector2(149, 56),"factor":1.0,"button_index":1,"pressed":true,"double_click":false,"script":null)
 ]
 }

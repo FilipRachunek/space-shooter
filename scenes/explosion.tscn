@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://be7wmclj5fdto"]
+
+[ext_resource type="Script" path="res://scenes/explosion.gd" id="1_74toc"]
+[ext_resource type="Shader" path="res://shaders/explosion.gdshader" id="2_dnbp0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4qvca"]
+render_priority = 0
+shader = ExtResource("2_dnbp0")
+shader_parameter/texture_speed = Vector2(0, 1)
+shader_parameter/flash_power = 1.0
+shader_parameter/flash_color = Color(1, 0.85, 0.42, 1)
+shader_parameter/fire_power = 1.0
+shader_parameter/fire_root_color = Color(1, 0.75, 0.3, 1)
+shader_parameter/fire_tip_color = Color(1, 0.03, 0, 1)
+shader_parameter/fire_speed = 1.0
+shader_parameter/smoke_power = 1.0
+shader_parameter/smoke_aperture = 0.45
+shader_parameter/smoke_color1 = Color(0.46, 0.46, 0.46, 1)
+shader_parameter/smoke_color2 = Color(0.185, 0.185, 0.185, 1)
+shader_parameter/smoke_speed = 0.1
+
+[sub_resource type="QuadMesh" id="QuadMesh_moq6q"]
+material = SubResource("ShaderMaterial_4qvca")
+
+[node name="explosion" type="Node3D"]
+script = ExtResource("1_74toc")
+
+[node name="fire" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_moq6q")

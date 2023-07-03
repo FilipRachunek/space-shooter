@@ -4,6 +4,21 @@ extends CharacterBody3D
 const SPEED = 30.0
 
 
+@onready var weapons_node = $Weapons
+
+var weapons = []
+
+
+signal player_destroyed()
+
+
+func init():
+	for weapon in weapons_node.get_children():
+		if weapon.name == "Main":
+			weapon.active = true
+		weapons.append(weapon)
+
+
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -17,3 +32,7 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_area_3d_area_entered(area):
+	player_destroyed.emit()
