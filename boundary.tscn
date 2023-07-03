@@ -10,24 +10,28 @@ size = Vector3(150, 20, 1)
 
 [node name="LeftWall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0, 0)
+collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftWall"]
 shape = SubResource("BoxShape3D_dp0bs")
 
 [node name="RightWall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0, 0)
+collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightWall"]
 shape = SubResource("BoxShape3D_dp0bs")
 
 [node name="TopWall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -35)
+collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TopWall"]
 shape = SubResource("BoxShape3D_ykyni")
 
 [node name="BottomWall" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35)
+collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BottomWall"]
 shape = SubResource("BoxShape3D_ykyni")

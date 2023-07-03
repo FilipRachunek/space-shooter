@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://coxg57caxo2ff"]
+[gd_scene load_steps=8 format=3 uid="uid://coxg57caxo2ff"]
 
 [ext_resource type="Script" path="res://scenes/bullet.gd" id="1_ydib2"]
+[ext_resource type="Script" path="res://scenes/bullet_trail.gd" id="2_0a8ck"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhv34"]
 
@@ -38,6 +39,10 @@ shadow_mesh = SubResource("ArrayMesh_vthxk")
 height = 2.5
 radius = 0.3
 
+[sub_resource type="Gradient" id="Gradient_s87jk"]
+offsets = PackedFloat32Array(0, 0.550459)
+colors = PackedColorArray(0, 0, 0, 1, 0.388341, 0.153943, 7.21961e-08, 1)
+
 [node name="bullet" type="Area3D" groups=["bullet"]]
 collision_layer = 4
 collision_mask = 16
@@ -51,3 +56,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.234536)
 shape = SubResource("CylinderShape3D_mjri7")
+
+[node name="Trail" type="Line2D" parent="."]
+script = ExtResource("2_0a8ck")
+gradient_color = SubResource("Gradient_s87jk")

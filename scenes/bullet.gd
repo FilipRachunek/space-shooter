@@ -1,6 +1,8 @@
 extends Area3D
 
 
+@onready var bullet_trail = $Trail
+
 var current_direction
 @export var hit_points = 10.0
 @export var speed = 150.0
@@ -18,6 +20,7 @@ func init(weapon):
 
 
 func _process(delta):
+	bullet_trail.add_new_point(GameManager.to_2D(global_position))
 	translate(Vector3(0, 0, -delta * speed))
 	# if FPS is low, a bullet can skip the boundary, so we better check
 	if !GameManager.is_in_boundary(self):

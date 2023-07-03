@@ -13,6 +13,10 @@ func _process(delta):
 	lifecycle.process(self, delta)
 
 
+func explode():
+	lifecycle.explode(self)
+
+
 func _on_area_entered(area):
 	if area.is_in_group("bullet"):
 		lifecycle.process_hit(self, area)

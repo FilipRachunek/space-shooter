@@ -3,6 +3,8 @@ extends Node3D
 
 @onready var debug_overlay = $debug
 @onready var player = $player
+@onready var hud = $HUD
+@onready var camera = $Camera3D
 
 var fire_cadence = 0.2
 var fire_cooldown = 0.0
@@ -17,8 +19,10 @@ func _ready():
 	)
 	debug_overlay.init(player)
 	player.connect("player_destroyed", Callable(self, "_on_player_destroyed"))
+	player.connect("update_hud", Callable(self, "_on_update_hud"))
 	player.init()
 	GameManager.set_player(player)
+	GameManager.set_camera(camera)
 	GameManager.spawn_stars(self)
 	GameManager.spawn_asteroids(self)
 
@@ -26,6 +30,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	GameManager.process_background(self, delta)
+	GameManager.process_debris(delta)
 	if Input.is_action_pressed("shoot_primary") and fire_cooldown <= 0:
 		fire_bullet()
 	fire_cooldown -= delta
@@ -38,7 +43,7 @@ func fire_bullet():
 
 
 func _on_player_destroyed():
-	player.queue_free()
+	GameManager.create_explosion(self, player, 30, 30)
 
 
 func _on_enemy_destroyed(enemy):
@@ -47,3 +52,7 @@ func _on_enemy_destroyed(enemy):
 
 func _on_show_hit_effect(enemy, bullet):
 	GameManager.create_hit_effect(self, enemy, bullet)
+
+
+func _on_update_hud():
+	hud.set_player_values(player)

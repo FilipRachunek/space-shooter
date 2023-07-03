@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://fd8rp71ui5dl"]
+[gd_scene load_steps=9 format=3 uid="uid://fd8rp71ui5dl"]
 
 [ext_resource type="Script" path="res://autoload/sound_manager.gd" id="1_aac62"]
 [ext_resource type="AudioStream" uid="uid://46n24xf56k6h" path="res://sounds/bullet.wav" id="2_6awir"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bjk8lkjldwqy4" path="res://sounds/rock_1_hit.wav" id="4_tga1j"]
 [ext_resource type="AudioStream" uid="uid://b1hssplhu8pw6" path="res://sounds/rock_2_hit.wav" id="6_qeahq"]
 [ext_resource type="AudioStream" uid="uid://bgg1647kli6cd" path="res://sounds/rock_3_hit.wav" id="7_y4q53"]
+[ext_resource type="AudioStream" uid="uid://cijdjt5ky4bs1" path="res://sounds/explosion.wav" id="8_uvg11"]
 
 [node name="sound_manager" type="Node"]
 script = ExtResource("1_aac62")
@@ -28,3 +29,6 @@ stream = ExtResource("6_qeahq")
 
 [node name="RockHit3Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_y4q53")
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_uvg11")

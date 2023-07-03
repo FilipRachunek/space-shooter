@@ -8,6 +8,7 @@ extends Node
 @onready var hit_effect_scene = preload("res://scenes/hit_effect.tscn")
 
 var player
+var camera
 
 var boundary = {
 	"left": 0.0,
@@ -16,6 +17,14 @@ var boundary = {
 	"bottom": 0.0,
 }
 var boundary_margin = 10.0
+
+
+func set_camera(_camera):
+	camera = _camera
+
+
+func to_2D(vector3):
+	return camera.unproject_position(vector3)
 
 
 func set_boundary(left, right, top, bottom):
@@ -63,6 +72,20 @@ func process_background(root_node, delta):
 			spawn_star(root_node, true)
 
 
+func process_debris(delta):
+	for mesh in get_tree().get_nodes_in_group("debris"):
+		mesh.global_translate(mesh.get_meta("vector") * delta * 10)
+		mesh.rotate(Vector3(1, 0, 0), mesh.get_meta("rotation").x * delta)
+		mesh.rotate(Vector3(0, 1, 0), mesh.get_meta("rotation").y * delta)
+		mesh.rotate(Vector3(0, 0, 1), mesh.get_meta("rotation").z * delta)
+		var time_left = mesh.get_meta("timer") - delta
+		# if the debris left the screen or timeouted, remove the mesh
+		if time_left <= 0 or !is_in_boundary(mesh):
+			mesh.queue_free()
+		else:
+			mesh.set_meta("timer", time_left)
+
+
 func spawn_asteroids(root_node):
 	for i in 5:
 		var spawn = {
@@ -91,7 +114,27 @@ func create_explosion(root_node, source_node, width, height):
 	var speed = 1.0
 	explosion.init(source_node.global_transform.origin.x, source_node.global_transform.origin.z, width, height, speed)
 	root_node.add_child(explosion)
+	SoundManager.explode()
+	if source_node.is_in_group("modules"):
+		for module in Utils.get_all_children(source_node):
+			if module is MeshInstance3D:
+				create_debris_from_module(root_node, module, source_node.scale)
 	source_node.queue_free()
+
+
+func create_debris_from_module(root_node, module, scale):
+	var debris = module.duplicate()
+	debris.add_to_group("debris")
+	debris.set_layer_mask_value(1, false)  # remove from the main directional light mask
+	debris.set_layer_mask_value(10, true)  # make it illuminated only by the secondary (weak) light
+	# give each debris part a random translation and rotation vector
+	debris.set_meta("vector", Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)))
+	debris.set_meta("rotation", Vector3(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)))
+	# set the debris lifetime in seconds
+	debris.set_meta("timer", 10.0)
+	debris.scale_object_local(scale)
+	debris.position = module.global_transform.origin
+	root_node.add_child(debris)
 
 
 func create_hit_effect(root_node, enemy, bullet):

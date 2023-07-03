@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://befituamqu5km"]
+[gd_scene load_steps=4 format=3 uid="uid://befituamqu5km"]
 
+[ext_resource type="Script" path="res://scenes/HUD.gd" id="1_eljac"]
 [ext_resource type="FontFile" uid="uid://h2ic5jy5inj2" path="res://fonts/BrunoAceSC-Regular.ttf" id="1_i1rrg"]
 [ext_resource type="FontFile" uid="uid://bjlvc3ca27vg3" path="res://fonts/SourceSansPro-Regular.ttf" id="2_ewkcu"]
 
 [node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_eljac")
 
 [node name="Player" type="MarginContainer" parent="."]
 offset_right = 372.0
