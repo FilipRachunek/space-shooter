@@ -25,6 +25,7 @@ var shield_power = max_shield_power
 var shield_alpha = 0.0
 var ship_emission = 0.0
 var shift_pressed = false
+var missiles = 0
 
 
 signal update_hud()
@@ -84,6 +85,19 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+func activate_all_weapons():
+	for weapon in weapons:
+		weapon.active = true
+
+
+func get_main_weapon():
+	if weapons:
+		for weapon in weapons:
+			if weapon.name == "Main":
+				return weapon
+	return null
+
+
 func shield_hit(value):
 	# flash the shield (set a timer to change the alpha value continuously)
 	shield_alpha = MAX_SHIELD_ALPHA
@@ -97,6 +111,11 @@ func reset_material():
 
 func set_emission():
 	body_mesh.get_active_material(0).emission = Color(ship_emission, ship_emission, ship_emission, 1)
+
+
+func activate_shield():
+	shield_collision.set_deferred("enabled", true)
+	shield.visible = true
 
 
 func remove_shield():
@@ -122,8 +141,21 @@ func process_hit(area, enemy_impact):
 	if enemy_impact:
 		if hull_integrity > 0:
 			area.explode()
-		else:
-			area.queue_free()  # bullets do not explode
+	else:
+		area.queue_free()  # bullets do not explode
+
+
+func process_power_up(power_up):
+	if power_up.shield_boost:
+		if shield_power == 0:
+			activate_shield()
+		shield_power = clampf(shield_power + 20, 0, max_shield_power)
+	if power_up.activate_side_weapons:
+		activate_all_weapons()
+	if power_up.add_missile:
+		missiles += 1
+	update_hud.emit()
+	power_up.queue_free()
 
 
 func get_hit_points(area, enemy_impact):
@@ -131,12 +163,15 @@ func get_hit_points(area, enemy_impact):
 
 
 func _on_area_3d_area_entered(area):
-	# get ready for projectiles fired by enemies
 	var bullet_impact = area.is_in_group("ufo_bullet")
 	var enemy_impact = area.is_in_group("enemy")
+	var power_up_impact = area.is_in_group("powerups")
 	if bullet_impact or enemy_impact:
+		# handle the impact
 		ship_emission = MAX_EMISSION
 		process_hit(area, enemy_impact)  # get value from enemies
+	elif power_up_impact:
+		process_power_up(area)
 
 
 func _on_shield_area_entered(area):

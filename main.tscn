@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpwr6jrfmfuwq"]
+[gd_scene load_steps=8 format=3 uid="uid://cpwr6jrfmfuwq"]
 
 [ext_resource type="PackedScene" uid="uid://01ldear5ava2" path="res://scenes/debug.tscn" id="1_omudf"]
 [ext_resource type="Script" path="res://main.gd" id="1_ot8d5"]
 [ext_resource type="PackedScene" uid="uid://befituamqu5km" path="res://scenes/HUD.tscn" id="2_iv8f8"]
 [ext_resource type="PackedScene" uid="uid://77c4ijjom8fn" path="res://scenes/player.tscn" id="3_uyk6t"]
 [ext_resource type="PackedScene" uid="uid://dhm8xxlddggo8" path="res://boundary.tscn" id="5_cp5lu"]
+[ext_resource type="FontFile" uid="uid://h2ic5jy5inj2" path="res://fonts/BrunoAceSC-Regular.ttf" id="6_ovioa"]
 
 [sub_resource type="Environment" id="Environment_baq2d"]
 background_mode = 1
@@ -41,3 +42,22 @@ grow_vertical = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_baq2d")
+
+[node name="LoadingBox" type="MarginContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -20.0
+offset_right = 78.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoadingLabel" type="Label" parent="LoadingBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_ovioa")
+theme_override_font_sizes/font_size = 24
+text = "Loading, please wait"

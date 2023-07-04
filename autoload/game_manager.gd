@@ -86,20 +86,6 @@ func process_debris(delta):
 			mesh.set_meta("timer", time_left)
 
 
-func spawn_asteroids(root_node):
-	for i in 5:
-		var spawn = {
-			"hit_points": 20,
-			"coords": Vector3(-40 + i * 20, 0, -30),
-			"scale": Utils.get_random_vector3_in_range(1, 4),
-			"direction": Vector3(0, 0, randf_range(5.0, 15.0)),
-			"rotation": Utils.get_random_vector3_in_range(0.1, 1.0),
-		}
-		var asteroid = asteroid_scene.instantiate()
-		asteroid.init(root_node, spawn)
-		root_node.add_child(asteroid)
-
-
 func fire_player_weapon(root_node):
 	for weapon in player.weapons:
 		if weapon.active:
@@ -115,11 +101,21 @@ func create_explosion(root_node, source_node, width, height):
 	explosion.init(source_node.global_transform.origin.x, source_node.global_transform.origin.z, width, height, speed)
 	root_node.add_child(explosion)
 	SoundManager.explode()
+	if source_node is Enemy:
+		spawn_power_up(root_node, source_node)
 	if source_node.is_in_group("modules"):
 		for module in Utils.get_all_children(source_node):
 			if module is MeshInstance3D:
 				create_debris_from_module(root_node, module, source_node.scale)
 	source_node.queue_free()
+
+
+func spawn_power_up(root_node, enemy):
+	var power_up_scene = enemy.power_up
+	if power_up_scene != null:
+		var power_up = power_up_scene.instantiate()
+		power_up.init(enemy)
+		root_node.add_child(power_up)
 
 
 func create_debris_from_module(root_node, module, scale):
@@ -145,3 +141,12 @@ func create_hit_effect(root_node, enemy, bullet):
 		SoundManager.metal_hit_effect()
 	else:
 		SoundManager.rock_hit_effect()
+
+
+func fire_enemy_weapon(root_node, enemy, event):
+	for weapon in enemy.weapons:
+		if weapon.name == event.fire.weapon:
+			if is_in_boundary(weapon, false):
+				var bullet = event.fire.shot.instantiate()
+				bullet.init(weapon, enemy.rotation.y)
+				root_node.add_child(bullet)

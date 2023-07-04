@@ -5,10 +5,15 @@ extends Node
 @onready var metal_hit_sound = [$MetalHit1Sound, $MetalHit2Sound]
 @onready var rock_hit_sound = [$RockHit1Sound, $RockHit2Sound, $RockHit3Sound]
 @onready var explosion_sound = $ExplosionSound
+@onready var missile_sound = $MissileSound
 
 
 func fire_bullet():
 	bullet_sound.play()
+
+
+func fire_missile():
+	missile_sound.play()
 
 
 func metal_hit_effect():

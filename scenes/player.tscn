@@ -175,13 +175,12 @@ shadow_mesh = SubResource("ArrayMesh_3fx2s")
 [sub_resource type="SphereShape3D" id="SphereShape3D_lr6kh"]
 radius = 3.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vt3k1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5oir"]
 transparency = 1
-albedo_color = Color(0.698039, 1, 1, 0.0588235)
-metallic = 1.0
+albedo_color = Color(0, 0.537255, 0.545098, 0.0666667)
 
-[sub_resource type="SphereMesh" id="SphereMesh_1wsf3"]
-material = SubResource("StandardMaterial3D_vt3k1")
+[sub_resource type="SphereMesh" id="SphereMesh_yyrir"]
+material = SubResource("StandardMaterial3D_p5oir")
 radius = 5.0
 height = 10.0
 
@@ -192,7 +191,7 @@ radius = 5.0
 offsets = PackedFloat32Array(0.15942, 0.42029, 0.608696, 0.73913)
 colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1, 0.95117, 0.571121, 0.0601382, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dxysi"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0vu64"]
 gradient = SubResource("Gradient_7nvhe")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ti0nj"]
@@ -209,9 +208,9 @@ linear_accel_min = 1.0
 linear_accel_max = 5.0
 angle_max = 360.0
 scale_min = 0.1
-color_initial_ramp = SubResource("GradientTexture1D_dxysi")
+color_initial_ramp = SubResource("GradientTexture1D_0vu64")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f502k"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vshte"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
@@ -224,7 +223,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_ge7pv"]
-material = SubResource("StandardMaterial3D_f502k")
+material = SubResource("StandardMaterial3D_vshte")
 
 [node name="player" type="CharacterBody3D" groups=["modules"]]
 collision_mask = 16
@@ -291,7 +290,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 [node name="Shield" type="Area3D" parent="."]
 
 [node name="Sphere" type="MeshInstance3D" parent="Shield"]
-mesh = SubResource("SphereMesh_1wsf3")
+mesh = SubResource("SphereMesh_yyrir")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shield"]
 shape = SubResource("SphereShape3D_lpkn2")

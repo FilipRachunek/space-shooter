@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://cayjvr4ef71x2"]
+
+[ext_resource type="Material" path="res://materials/orange_cells.tres" id="1_cjkk0"]
+[ext_resource type="Script" path="res://scenes/ufo_bullet.gd" id="1_k1usc"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_nn6x0"]
+material = ExtResource("1_cjkk0")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_blii3"]
+
+[node name="torpedo" type="Area3D" groups=["ufo_bullet"]]
+collision_layer = 8
+collision_mask = 16
+script = ExtResource("1_k1usc")
+hit_points = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_nn6x0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_blii3")

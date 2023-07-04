@@ -42,3 +42,56 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_ewkcu")
 value = 100.0
+
+[node name="MissileLabel" type="Label" parent="Player/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i1rrg")
+theme_override_font_sizes/font_size = 20
+text = "Missiles"
+
+[node name="MissileCounter" type="Label" parent="Player/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_i1rrg")
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Boss" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -372.0
+offset_bottom = 82.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="Boss"]
+layout_mode = 2
+columns = 2
+
+[node name="HullIntegrityLabel" type="Label" parent="Boss/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i1rrg")
+theme_override_font_sizes/font_size = 20
+text = "Hull integrity"
+
+[node name="HullIntegrityBar" type="ProgressBar" parent="Boss/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_ewkcu")
+value = 100.0
+
+[node name="ShieldPowerLabel" type="Label" parent="Boss/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_i1rrg")
+theme_override_font_sizes/font_size = 20
+text = "Shield power"
+
+[node name="ShieldPowerBar" type="ProgressBar" parent="Boss/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_ewkcu")
+value = 100.0
