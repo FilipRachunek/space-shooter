@@ -23,7 +23,7 @@ columns = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i1rrg")
 theme_override_font_sizes/font_size = 20
-text = "Hull integrity"
+text = "main.label.hull.integrity"
 
 [node name="HullIntegrityBar" type="ProgressBar" parent="Player/GridContainer"]
 layout_mode = 2
@@ -35,7 +35,7 @@ value = 100.0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i1rrg")
 theme_override_font_sizes/font_size = 20
-text = "Shield power"
+text = "main.label.shield.power"
 
 [node name="ShieldPowerBar" type="ProgressBar" parent="Player/GridContainer"]
 layout_mode = 2
@@ -47,7 +47,7 @@ value = 100.0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i1rrg")
 theme_override_font_sizes/font_size = 20
-text = "Missiles"
+text = "main.label.missiles"
 
 [node name="MissileCounter" type="Label" parent="Player/GridContainer"]
 layout_mode = 2
@@ -76,7 +76,7 @@ columns = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i1rrg")
 theme_override_font_sizes/font_size = 20
-text = "Hull integrity"
+text = "main.label.hull.integrity"
 
 [node name="HullIntegrityBar" type="ProgressBar" parent="Boss/GridContainer"]
 layout_mode = 2
@@ -88,7 +88,7 @@ value = 100.0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_i1rrg")
 theme_override_font_sizes/font_size = 20
-text = "Shield power"
+text = "main.label.shield.power"
 
 [node name="ShieldPowerBar" type="ProgressBar" parent="Boss/GridContainer"]
 layout_mode = 2

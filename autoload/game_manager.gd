@@ -9,6 +9,32 @@ extends Node
 
 var player
 var camera
+var world_environment
+var mouse_captured = false
+
+
+func capture_mouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	mouse_captured = true
+
+
+func release_mouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	mouse_captured = false
+
+
+func set_world_environment(_world_environment):
+	world_environment = _world_environment
+
+
+func set_pause_environment():
+	world_environment.environment.volumetric_fog_enabled = true
+	world_environment.environment.volumetric_fog_albedo = Color("#292929")
+
+
+func reset_game_environment():
+	world_environment.environment.volumetric_fog_enabled = false
+
 
 var boundary = {
 	"left": 0.0,

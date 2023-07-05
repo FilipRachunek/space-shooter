@@ -1,0 +1,39 @@
+KEYS,en,cz
+menu.button.start,Start,Start
+menu.button.settings,Settings,Nastavení
+menu.button.exit,Exit,Ukončit
+settings.label.window.size,Window size:,Velikost okna:
+settings.label.fullscreen,Fullscreen,Fullscreen
+settings.label.vsync,V-Sync:,V-Sync:
+settings.vsync.disabled,Disabled,Vypnuto
+settings.vsync.enabled,Enabled,Zapnuto
+settings.vsync.adaptive,Adaptive,Adaptivní
+settings.vsync.mailbox,Mailbox,Mailbox
+settings.label.gamma.correction,Gamma correction:,Gama korekce:
+settings.label.language,Language:,Jazyk:
+settings.button.back,Back,Zpět
+settings.language.en,English,angličtina
+settings.language.cz,Czech,čeština
+settings.label.volume.master,Master volume,Celková hlasitost
+settings.label.volume.music,Music volume,Hlasitost hudby
+settings.label.volume.sfx,Sound effects volume,Hlasitost efektů
+main.label.hull.integrity,Hull integrity:,Integrita trupu:
+main.label.shield.power,Shield power:,Energie štítu:
+main.label.missiles,Missiles:,Rakety:
+main.label.loading,"Loading, please wait","Nahrávám, prosím čekejte"
+main.label.game.paused,Game paused,Hra pozastavena
+main.label.resume,Press Enter to continue,Pokračujte stisknutím Enter
+settings.button.key.bindings,Key bindings,Ovládací klávesy
+settings.label.primary.key,Primary key,Primární klávesa
+settings.label.secondary.key,Secondary key,Sekundární klávesa
+settings.label.move.left,Move left:,Pohyb doleva:
+settings.label.move.right,Move right:,Pohyb doprava:
+settings.label.move.up,Move up:,Pohyb nahoru:
+settings.label.move.down,Move down:,Pohyb dolů:
+settings.label.accelerate,Accelerate:,Zrychlený pohyb:
+settings.label.main.weapon,Main weapon:,Hlavní zbraň:
+settings.label.special.weapon,Special weapon:,Speciální zbraň:
+settings.label.pause.game,Pause game:,Pozastavit hru:
+settings.label.resume.game,Resume game:,Zrušit pauzu:
+settings.button.restore.default.keys,Restore default keys,Obnovit původní klávesy
+intro.label.author,Filip Rachůnek presents,Filip Rachůnek uvádí

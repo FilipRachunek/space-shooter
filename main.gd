@@ -7,6 +7,8 @@ extends Node3D
 @onready var hud = $HUD
 @onready var camera = $Camera3D
 @onready var loading_box = $LoadingBox
+@onready var pause_box = $PauseBox
+@onready var world_environment = $WorldEnvironment
 
 var fire_cadence = 0.2
 var fire_cooldown = 0.0
@@ -20,6 +22,8 @@ var thread
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pause_box.visible = false
+	GameManager.set_world_environment(world_environment)
 	GameManager.set_boundary(
 		$"Boundary/LeftWall".position.x,
 		$"Boundary/RightWall".position.x,
@@ -36,9 +40,29 @@ func _ready():
 	GameManager.spawn_stars(self)
 
 
+func _input(_event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		GameManager.release_mouse()
+		get_tree().change_scene_to_file("res://menu.tscn")
+	if Input.is_action_just_pressed("pause_game"):
+		pause_game()
+
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT:
+		pause_game()
+
+
+func pause_game():
+	pause_box.visible = true
+	GameManager.set_pause_environment()
+	get_tree().paused = true
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if level_loaded:
+		pause_box.visible = get_tree().paused
 		GameManager.process_background(self, delta)
 		GameManager.process_debris(delta)
 		current_level.process(self, delta)

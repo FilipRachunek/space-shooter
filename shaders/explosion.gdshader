@@ -18,6 +18,8 @@ uniform vec4 smoke_color1 : source_color = vec4(0.46, 0.46, 0.46, 1.0);
 uniform vec4 smoke_color2 : source_color = vec4(0.185, 0.185, 0.185, 1.0);
 uniform float smoke_speed = 0.1;
 
+global uniform float global_time;
+
 void vertex() {
     MODELVIEW_MATRIX = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
     VERTEX = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
@@ -56,11 +58,11 @@ float noise_texture(vec2 uv) {
 void fragment() {
     float flash = clamp((1.0 - length(vec2(0.5, 0.5) - UV) * 2.0) * flash_power, 0.0, 1.0);
     float fire = clamp((1.0 - length(vec2(0.5, 0.5) - UV) * 2.0) * fire_power, 0.0, 1.0);
-    float fire_noise = fire * (((fire + fire_aperture) * noise_texture(UV * 3.0 + texture_speed * TIME * fire_speed) - fire_aperture) * 75.0);
+    float fire_noise = fire * (((fire + fire_aperture) * noise_texture(UV * 3.0 + texture_speed * global_time * fire_speed) - fire_aperture) * 75.0);
     vec4 fire_color = mix(fire_tip_color, fire_root_color, fire_noise * 0.5);
 
     float smoke = clamp((1.0 - length(vec2(0.5, 0.5) - UV) * 2.0) * smoke_power, 0.0, 1.0);
-    float smoke_noise_texel = noise_texture(UV + texture_speed * TIME * smoke_speed);
+    float smoke_noise_texel = noise_texture(UV + texture_speed * global_time * smoke_speed);
     float smoke_noise = smoke * (((smoke + smoke_aperture) * smoke_noise_texel - smoke_aperture) * 75.0);
     vec4 smoke_color = mix(smoke_color1, smoke_color2, clamp(smoke_noise_texel * 4.0 - 1.5, 0.0, 1.0));
 

@@ -6,6 +6,30 @@ extends Node
 @onready var rock_hit_sound = [$RockHit1Sound, $RockHit2Sound, $RockHit3Sound]
 @onready var explosion_sound = $ExplosionSound
 @onready var missile_sound = $MissileSound
+@onready var intro_song = $IntroSong
+
+var master_bus
+var music_bus
+var sfx_bus
+
+
+func _ready():
+	master_bus = AudioServer.get_bus_index("Master")
+	music_bus = AudioServer.get_bus_index("Music")
+	sfx_bus = AudioServer.get_bus_index("Sfx")
+
+
+func set_master_volume(value):
+	# the value is between 0 and 1
+	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))
+
+
+func set_music_volume(value):
+	AudioServer.set_bus_volume_db(music_bus, linear_to_db(value))
+
+
+func set_sfx_volume(value):
+	AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(value))
 
 
 func fire_bullet():
@@ -30,3 +54,18 @@ func rock_hit_effect():
 
 func explode():
 	explosion_sound.play()
+
+
+func fade_in_intro_song(position = 0.0):
+	if not intro_song.playing:
+		intro_song.volume_db = -20
+		intro_song.play(position)
+		var tween = get_tree().create_tween()
+		tween.tween_property(intro_song, "volume_db", 0, 1)
+
+
+func fade_out_intro_song():
+	if intro_song.playing:
+		var tween = get_tree().create_tween()
+		tween.tween_property(intro_song, "volume_db", -40, 3)
+		tween.tween_callback(intro_song.stop)

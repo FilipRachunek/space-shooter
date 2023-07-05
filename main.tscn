@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cpwr6jrfmfuwq"]
+[gd_scene load_steps=9 format=3 uid="uid://cpwr6jrfmfuwq"]
 
 [ext_resource type="PackedScene" uid="uid://01ldear5ava2" path="res://scenes/debug.tscn" id="1_omudf"]
 [ext_resource type="Script" path="res://main.gd" id="1_ot8d5"]
@@ -6,9 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://77c4ijjom8fn" path="res://scenes/player.tscn" id="3_uyk6t"]
 [ext_resource type="PackedScene" uid="uid://dhm8xxlddggo8" path="res://boundary.tscn" id="5_cp5lu"]
 [ext_resource type="FontFile" uid="uid://h2ic5jy5inj2" path="res://fonts/BrunoAceSC-Regular.ttf" id="6_ovioa"]
-
-[sub_resource type="Environment" id="Environment_baq2d"]
-background_mode = 1
+[ext_resource type="Environment" uid="uid://bel0eg6fvqvo0" path="res://world.tres" id="6_sqdi0"]
+[ext_resource type="Script" path="res://pause_node.gd" id="8_e20bw"]
 
 [node name="MainRoot" type="Node3D"]
 script = ExtResource("1_ot8d5")
@@ -41,7 +40,7 @@ grow_vertical = 0
 [node name="Boundary" parent="." instance=ExtResource("5_cp5lu")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_baq2d")
+environment = ExtResource("6_sqdi0")
 
 [node name="LoadingBox" type="MarginContainer" parent="."]
 anchors_preset = 8
@@ -60,4 +59,35 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_ovioa")
 theme_override_font_sizes/font_size = 24
-text = "Loading, please wait"
+text = "main.label.loading"
+
+[node name="PauseBox" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -94.0
+offset_top = -28.0
+offset_right = 94.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GamePausedLabel" type="Label" parent="PauseBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_ovioa")
+theme_override_font_sizes/font_size = 30
+text = "main.label.game.paused"
+
+[node name="ContinueLabel" type="Label" parent="PauseBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("6_ovioa")
+theme_override_font_sizes/font_size = 20
+text = "main.label.resume"
+
+[node name="PauseNode" type="Node" parent="."]
+process_mode = 2
+script = ExtResource("8_e20bw")

@@ -1,0 +1,182 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1ww0a0svv2et"]
+
+[ext_resource type="Script" path="res://settings.gd" id="1_w7t5w"]
+[ext_resource type="Environment" uid="uid://bel0eg6fvqvo0" path="res://world.tres" id="2_rxc6r"]
+[ext_resource type="FontFile" uid="uid://h2ic5jy5inj2" path="res://fonts/BrunoAceSC-Regular.ttf" id="3_pdjoo"]
+[ext_resource type="PackedScene" uid="uid://crv3ny1ca5uio" path="res://scenes/asteroid.tscn" id="5_wmwyg"]
+[ext_resource type="PackedScene" uid="uid://uo0egdx8tmts" path="res://scenes/ufo_ship.tscn" id="6_rkt45"]
+
+[node name="settings" type="Node3D"]
+script = ExtResource("1_w7t5w")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 25, 0)
+light_cull_mask = 4294966783
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 130, 0)
+fov = 30.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_rxc6r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="OptionsContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.5
+offset_top = -25.5
+offset_right = 24.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="WindowSizeLabel" type="Label" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pdjoo")
+theme_override_font_sizes/font_size = 20
+text = "settings.label.window.size"
+
+[node name="WindowSizeOptionButton" type="OptionButton" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+
+[node name="FullscreenLabel" type="Label" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pdjoo")
+theme_override_font_sizes/font_size = 20
+text = "settings.label.fullscreen"
+
+[node name="FullscreenButton" type="CheckButton" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+
+[node name="GammaLabel" type="Label" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pdjoo")
+theme_override_font_sizes/font_size = 20
+text = "settings.label.gamma.correction"
+
+[node name="GammaSlider" type="HSlider" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 16.0
+step = 0.01
+
+[node name="VSyncLabel" type="Label" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pdjoo")
+theme_override_font_sizes/font_size = 20
+text = "settings.label.vsync"
+
+[node name="VSyncOptionButton" type="OptionButton" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pdjoo")
+theme_override_font_sizes/font_size = 20
+text = "settings.label.volume.master"
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicVolumeLabel" type="Label" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pdjoo")
+theme_override_font_sizes/font_size = 20
+text = "settings.label.volume.music"
+
+[node name="MusicVolumeSlider" type="HSlider" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="SfxVolumeLabel" type="Label" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pdjoo")
+theme_override_font_sizes/font_size = 20
+text = "settings.label.volume.sfx"
+
+[node name="SfxVolumeSlider" type="HSlider" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="LanguageLabel" type="Label" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pdjoo")
+theme_override_font_sizes/font_size = 20
+text = "settings.label.language"
+
+[node name="LanguageOptionButton" type="OptionButton" parent="CanvasLayer/OptionsContainer"]
+layout_mode = 2
+alignment = 2
+expand_icon = true
+
+[node name="KeyBindingContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -78.0
+offset_right = 260.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 140
+
+[node name="KeyBindingButton" type="Button" parent="CanvasLayer/KeyBindingContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_pdjoo")
+theme_override_font_sizes/font_size = 24
+text = "settings.button.key.bindings"
+
+[node name="BackContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="BackButton" type="Button" parent="CanvasLayer/BackContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_pdjoo")
+theme_override_font_sizes/font_size = 40
+text = "settings.button.back"
+
+[node name="asteroid" parent="." instance=ExtResource("5_wmwyg")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -30, 0, 0)
+
+[node name="ufo_ship" parent="." instance=ExtResource("6_rkt45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 0)
+
+[connection signal="item_selected" from="CanvasLayer/OptionsContainer/WindowSizeOptionButton" to="." method="_on_window_size_option_button_item_selected"]
+[connection signal="toggled" from="CanvasLayer/OptionsContainer/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="value_changed" from="CanvasLayer/OptionsContainer/GammaSlider" to="." method="_on_gamma_slider_value_changed"]
+[connection signal="item_selected" from="CanvasLayer/OptionsContainer/VSyncOptionButton" to="." method="_on_v_sync_option_button_item_selected"]
+[connection signal="value_changed" from="CanvasLayer/OptionsContainer/MasterVolumeSlider" to="." method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/OptionsContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/OptionsContainer/SfxVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
+[connection signal="item_selected" from="CanvasLayer/OptionsContainer/LanguageOptionButton" to="." method="_on_language_option_button_item_selected"]
+[connection signal="pressed" from="CanvasLayer/KeyBindingContainer/KeyBindingButton" to="." method="_on_key_binding_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackContainer/BackButton" to="." method="_on_back_button_pressed"]

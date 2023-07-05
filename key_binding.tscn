@@ -1,0 +1,247 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4ktx8n15hqq1"]
+
+[ext_resource type="Script" path="res://key_binding.gd" id="1_hvgun"]
+[ext_resource type="Environment" uid="uid://bel0eg6fvqvo0" path="res://world.tres" id="2_qjyyr"]
+[ext_resource type="FontFile" uid="uid://h2ic5jy5inj2" path="res://fonts/BrunoAceSC-Regular.ttf" id="3_1iwxw"]
+[ext_resource type="Script" path="res://control_button.gd" id="4_a7vnf"]
+
+[node name="key_binding" type="Node3D"]
+script = ExtResource("1_hvgun")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 25, 0)
+light_cull_mask = 4294966783
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 130, 0)
+fov = 30.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_qjyyr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ControlsContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -266.0
+offset_top = -35.0
+offset_right = 266.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="EmptyLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+
+[node name="PrimaryKeyLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1iwxw")
+theme_override_font_sizes/font_size = 24
+text = "settings.label.primary.key"
+
+[node name="SecondaryKeyLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1iwxw")
+theme_override_font_sizes/font_size = 24
+text = "settings.label.secondary.key"
+
+[node name="MoveUpLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_1iwxw")
+theme_override_font_sizes/font_size = 24
+text = "settings.label.move.up"
+
+[node name="MoveUpPrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+action = "move_up"
+
+[node name="MoveUpSecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+action = "move_up"
+primary = false
+
+[node name="MoveLeftLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_1iwxw")
+theme_override_font_sizes/font_size = 24
+text = "settings.label.move.left"
+
+[node name="MoveLeftPrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+
+[node name="MoveLeftSecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+primary = false
+
+[node name="MoveDownLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_1iwxw")
+theme_override_font_sizes/font_size = 24
+text = "settings.label.move.down"
+
+[node name="MoveDownPrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+action = "move_down"
+
+[node name="MoveDownSecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+action = "move_down"
+primary = false
+
+[node name="MoveRightLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_1iwxw")
+theme_override_font_sizes/font_size = 24
+text = "settings.label.move.right"
+
+[node name="MoveRightPrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+action = "move_right"
+
+[node name="MoveRightSecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+action = "move_right"
+primary = false
+
+[node name="AccelerateLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_1iwxw")
+theme_override_font_sizes/font_size = 24
+text = "settings.label.accelerate"
+
+[node name="AcceleratePrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+action = "accelerate"
+
+[node name="AccelerateSecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+action = "accelerate"
+primary = false
+
+[node name="ShootPrimaryLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_1iwxw")
+theme_override_font_sizes/font_size = 24
+text = "settings.label.main.weapon"
+
+[node name="ShootPrimaryPrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+action = "shoot_primary"
+
+[node name="ShootPrimarySecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+action = "shoot_primary"
+primary = false
+
+[node name="ShootSecondaryLabel" type="Label" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_1iwxw")
+theme_override_font_sizes/font_size = 24
+text = "settings.label.special.weapon"
+
+[node name="ShootSecondaryPrimaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+action = "shoot_secondary"
+
+[node name="ShootSecondarySecondaryButton" type="Button" parent="CanvasLayer/ControlsContainer"]
+layout_mode = 2
+toggle_mode = true
+script = ExtResource("4_a7vnf")
+action = "shoot_secondary"
+primary = false
+
+[node name="RestoreDefaultContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -260.0
+offset_top = -178.0
+offset_right = 260.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 140
+
+[node name="RestoreDefaultButton" type="Button" parent="CanvasLayer/RestoreDefaultContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_1iwxw")
+theme_override_font_sizes/font_size = 24
+text = "settings.button.restore.default.keys"
+
+[node name="BackContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="BackButton" type="Button" parent="CanvasLayer/BackContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_1iwxw")
+theme_override_font_sizes/font_size = 40
+text = "settings.button.back"
+
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveUpPrimaryButton" to="CanvasLayer/ControlsContainer/MoveUpPrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveUpSecondaryButton" to="CanvasLayer/ControlsContainer/MoveUpSecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveLeftPrimaryButton" to="CanvasLayer/ControlsContainer/MoveLeftPrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveLeftSecondaryButton" to="CanvasLayer/ControlsContainer/MoveLeftSecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveDownPrimaryButton" to="CanvasLayer/ControlsContainer/MoveDownPrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveDownSecondaryButton" to="CanvasLayer/ControlsContainer/MoveDownSecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveRightPrimaryButton" to="CanvasLayer/ControlsContainer/MoveRightPrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/MoveRightSecondaryButton" to="CanvasLayer/ControlsContainer/MoveRightSecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/AcceleratePrimaryButton" to="CanvasLayer/ControlsContainer/AcceleratePrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/AccelerateSecondaryButton" to="CanvasLayer/ControlsContainer/AccelerateSecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/ShootPrimaryPrimaryButton" to="CanvasLayer/ControlsContainer/ShootPrimaryPrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/ShootPrimarySecondaryButton" to="CanvasLayer/ControlsContainer/ShootPrimarySecondaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/ShootSecondaryPrimaryButton" to="CanvasLayer/ControlsContainer/ShootSecondaryPrimaryButton" method="_on_toggled"]
+[connection signal="toggled" from="CanvasLayer/ControlsContainer/ShootSecondarySecondaryButton" to="CanvasLayer/ControlsContainer/ShootSecondarySecondaryButton" method="_on_toggled"]
+[connection signal="pressed" from="CanvasLayer/RestoreDefaultContainer/RestoreDefaultButton" to="." method="_on_restore_default_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackContainer/BackButton" to="." method="_on_back_button_pressed"]
