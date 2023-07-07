@@ -17,7 +17,7 @@ func compile_shaders(node, scenes):
 		new_mesh.mesh = QuadMesh.new()
 		new_mesh.set_surface_override_material(0, materials[key])
 		new_mesh.position = Vector3(GameManager.boundary.left + GameManager.boundary_margin / 2, 0, GameManager.boundary.bottom - GameManager.boundary_margin / 2)
-		node.add_child(new_mesh)
+		node.call_deferred("add_child", new_mesh)
 
 
 func remove_quads():

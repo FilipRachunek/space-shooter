@@ -52,7 +52,7 @@ text = "main.label.missiles"
 [node name="MissileCounter" type="Label" parent="Player/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_i1rrg")
+theme_override_fonts/font = ExtResource("2_ewkcu")
 theme_override_font_sizes/font_size = 20
 text = "0"
 

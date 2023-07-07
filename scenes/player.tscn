@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://77c4ijjom8fn"]
+[gd_scene load_steps=30 format=3 uid="uid://77c4ijjom8fn"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_3xfdo"]
 [ext_resource type="Texture2D" uid="uid://2rtvrcyp3lr0" path="res://models/player_palette.png" id="1_s21bw"]
 [ext_resource type="Script" path="res://scenes/weapon.gd" id="3_xoa0m"]
+[ext_resource type="Shader" path="res://shaders/shield.gdshader" id="4_h2vv5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aar71"]
 resource_name = "Material"
@@ -187,6 +188,22 @@ height = 10.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_lpkn2"]
 radius = 5.0
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3qcxn"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ue1g0"]
+noise = SubResource("FastNoiseLite_3qcxn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsq86"]
+render_priority = 0
+shader = ExtResource("4_h2vv5")
+shader_parameter/color_rim = Color(0.57, 0.9, 1, 0.96)
+shader_parameter/color_noise = Color(0.21, 0.84, 1, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ue1g0")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rsl84"]
+material = SubResource("ShaderMaterial_qsq86")
+size = Vector2(10, 10)
+
 [sub_resource type="Gradient" id="Gradient_7nvhe"]
 offsets = PackedFloat32Array(0.15942, 0.42029, 0.608696, 0.73913)
 colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1, 0.95117, 0.571121, 0.0601382, 1, 1, 1, 1, 1)
@@ -294,6 +311,11 @@ mesh = SubResource("SphereMesh_yyrir")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shield"]
 shape = SubResource("SphereShape3D_lpkn2")
+
+[node name="ShieldQuadMesh" type="MeshInstance3D" parent="Shield"]
+visible = false
+instance_shader_parameters/alpha = 1.0
+mesh = SubResource("QuadMesh_rsl84")
 
 [node name="Flames" type="Node3D" parent="."]
 
