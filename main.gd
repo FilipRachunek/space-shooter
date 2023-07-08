@@ -23,6 +23,7 @@ var thread
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pause_box.visible = false
+	GameManager.capture_mouse()
 	GameManager.set_world_environment(world_environment)
 	GameManager.set_boundary(
 		$"Boundary/LeftWall".position.x,
