@@ -17,11 +17,12 @@ var missile_cooldown = 0.0
 var current_level
 var level_loaded = false
 var level_loading = false
-var thread
+var thread: Thread
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	level_loaded = false
 	pause_box.visible = false
 	GameManager.capture_mouse()
 	GameManager.set_world_environment(world_environment)
@@ -81,11 +82,14 @@ func _process(delta):
 
 
 func load_level(level_name):
+	Thread.set_thread_safety_checks_enabled(false)
 	level_loading = true
 	current_level = LevelManager.load_level(level_name)
 	current_level.init(self, [])
 	level_loaded = true
-	loading_box.visible = false
+	level_loading = false
+	thread.call_deferred("wait_to_finish")
+	loading_box.call_deferred("set_visible", false)
 
 
 func fire_bullet():
@@ -138,4 +142,5 @@ func _on_weapon_fired(enemy, event):
 
 func _exit_tree():
 	# this is necessary to close all threads before exiting the game
-	thread.wait_to_finish()
+	if thread.is_alive():
+		thread.wait_to_finish()

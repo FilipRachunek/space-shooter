@@ -16,6 +16,11 @@ func _ready():
 	animation_player.play("author_fade_in_out")
 
 
+func _unhandled_key_input(event):
+	if event.is_pressed():
+		launch_menu_scene()
+
+
 func _on_animation_player_animation_finished(_anim_name):
 	launch_menu_scene()
 
