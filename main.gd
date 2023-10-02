@@ -156,7 +156,7 @@ func shockwave(enemy):
 	material.set_shader_parameter("center", projection)
 	color_rect.visible = true
 	var tween = get_tree().create_tween()
-	tween.tween_property(material, "shader_parameter/size", 1.2, 2.0)
+	tween.tween_property(material, "shader_parameter/size", 2.0, 2.0)
 	tween.tween_callback(hide_shader_rect)
 
 

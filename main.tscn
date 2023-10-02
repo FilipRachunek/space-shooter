@@ -13,8 +13,10 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ndbdm"]
 shader = ExtResource("9_c63d6")
 shader_parameter/center = Vector2(0.5, 0.5)
-shader_parameter/force = 0.3
+shader_parameter/power = 0.2
 shader_parameter/size = 0.0
+shader_parameter/sharpness = 0.1
+shader_parameter/thickness = 0.1
 
 [node name="MainRoot" type="Node3D"]
 script = ExtResource("1_ot8d5")
