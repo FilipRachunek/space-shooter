@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpwr6jrfmfuwq"]
+[gd_scene load_steps=11 format=3 uid="uid://cpwr6jrfmfuwq"]
 
 [ext_resource type="PackedScene" uid="uid://01ldear5ava2" path="res://scenes/debug.tscn" id="1_omudf"]
 [ext_resource type="Script" path="res://main.gd" id="1_ot8d5"]
@@ -8,6 +8,13 @@
 [ext_resource type="FontFile" uid="uid://h2ic5jy5inj2" path="res://fonts/BrunoAceSC-Regular.ttf" id="6_ovioa"]
 [ext_resource type="Environment" uid="uid://bel0eg6fvqvo0" path="res://world.tres" id="6_sqdi0"]
 [ext_resource type="Script" path="res://pause_node.gd" id="8_e20bw"]
+[ext_resource type="Shader" path="res://shaders/shockwave.gdshader" id="9_c63d6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ndbdm"]
+shader = ExtResource("9_c63d6")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = 0.3
+shader_parameter/size = 0.0
 
 [node name="MainRoot" type="Node3D"]
 script = ExtResource("1_ot8d5")
@@ -91,3 +98,13 @@ text = "main.label.resume"
 [node name="PauseNode" type="Node" parent="."]
 process_mode = 2
 script = ExtResource("8_e20bw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ndbdm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,6 +1,10 @@
 extends Node
 
 
+const DEFAULT_MASTER_VOLUME = 1.0
+const DEFAULT_MUSIC_VOLUME = 1.0
+const DEFAULT_SFX_VOLUME = 1.0
+
 const options_path = "user://options.data"
 
 
@@ -97,3 +101,18 @@ func set_locale():
 		options.locale = "en"  # default locale
 	TranslationServer.set_locale(options.locale)
 	write_options(options)
+
+
+func get_master_volume():
+	var options = read_options()
+	return options.master_volume if options.has("master_volume") else DEFAULT_MASTER_VOLUME
+
+
+func get_music_volume():
+	var options = read_options()
+	return options.music_volume if options.has("music_volume") else DEFAULT_MUSIC_VOLUME
+
+
+func get_sfx_volume():
+	var options = read_options()
+	return options.sfx_volume if options.has("sfx_volume") else DEFAULT_SFX_VOLUME

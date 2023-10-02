@@ -20,26 +20,32 @@ bus = &"Sfx"
 
 [node name="MetalHit1Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ac2jr")
+volume_db = -4.952
 bus = &"Sfx"
 
 [node name="MetalHit2Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_kllue")
+volume_db = -6.19
 bus = &"Sfx"
 
 [node name="RockHit1Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_tga1j")
+volume_db = -8.666
 bus = &"Sfx"
 
 [node name="RockHit2Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_qeahq")
+volume_db = -8.666
 bus = &"Sfx"
 
 [node name="RockHit3Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_y4q53")
+volume_db = -8.666
 bus = &"Sfx"
 
 [node name="ExplosionSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_uvg11")
+volume_db = -1.238
 bus = &"Sfx"
 
 [node name="MissileSound" type="AudioStreamPlayer" parent="."]

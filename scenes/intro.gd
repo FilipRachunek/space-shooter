@@ -12,6 +12,7 @@ func _ready():
 	OptionsManager.resize_window()
 	OptionsManager.set_v_sync_mode()
 	OptionsManager.set_locale()
+	SoundManager.init_sound_system()
 	SoundManager.fade_in_intro_song()
 	animation_player.play("author_fade_in_out")
 

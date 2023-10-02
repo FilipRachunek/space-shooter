@@ -9,6 +9,7 @@ extends Node3D
 @onready var loading_box = $LoadingBox
 @onready var pause_box = $PauseBox
 @onready var world_environment = $WorldEnvironment
+@onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 
 var fire_cadence = 0.2
 var fire_cooldown = 0.0
@@ -18,12 +19,14 @@ var current_level
 var level_loaded = false
 var level_loading = false
 var thread: Thread
+var original_speed = true
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	level_loaded = false
 	pause_box.visible = false
+	color_rect.visible = false
 	GameManager.capture_mouse()
 	GameManager.set_world_environment(world_environment)
 	GameManager.set_boundary(
@@ -61,9 +64,29 @@ func pause_game():
 	get_tree().paused = true
 
 
+func slow_speed():
+	if original_speed:
+		original_speed = false
+		var tween1 = get_tree().create_tween()
+		tween1.tween_property(Engine, "time_scale", 0.1, 3.0)
+		var tween2 = get_tree().create_tween()
+		tween2.tween_property(AudioServer, "playback_speed_scale", 0.1, 3.0)
+
+func restore_speed():
+	if not original_speed:
+		original_speed = true
+		var tween1 = get_tree().create_tween()
+		tween1.tween_property(Engine, "time_scale", 1.0, 3.0)
+		var tween2 = get_tree().create_tween()
+		tween2.tween_property(AudioServer, "playback_speed_scale", 1.0, 3.0)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if level_loaded:
+		if Input.is_action_just_pressed("slow_speed"):
+			slow_speed()
+		elif Input.is_action_just_pressed("restore_speed"):
+			restore_speed()
 		pause_box.visible = get_tree().paused
 		GameManager.process_background(self, delta)
 		GameManager.process_debris(delta)
@@ -124,6 +147,21 @@ func _on_enemy_destroyed(enemy):
 	GameManager.create_explosion(self, enemy, 15, 15)
 	if enemy.is_in_group("boss"):
 		hud.hide_boss_section()
+		shockwave(enemy)
+
+
+func shockwave(enemy):
+	var projection = GameManager.to_2D(enemy.position) / (get_window().size as Vector2)
+	var material = color_rect.get_material()
+	material.set_shader_parameter("center", projection)
+	color_rect.visible = true
+	var tween = get_tree().create_tween()
+	tween.tween_property(material, "shader_parameter/size", 1.2, 2.0)
+	tween.tween_callback(hide_shader_rect)
+
+
+func hide_shader_rect():
+	color_rect.visible = false
 
 
 func _on_show_hit_effect(enemy, bullet):

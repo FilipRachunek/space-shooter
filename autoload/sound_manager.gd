@@ -19,16 +19,28 @@ func _ready():
 	sfx_bus = AudioServer.get_bus_index("Sfx")
 
 
-func set_master_volume(value):
+func init_sound_system():
+	set_master_volume()
+	set_music_volume()
+	set_sfx_volume()
+
+
+func set_master_volume(value = -1):
+	if value == -1:
+		value = OptionsManager.get_master_volume()
 	# the value is between 0 and 1
 	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value))
 
 
-func set_music_volume(value):
+func set_music_volume(value = -1):
+	if value == -1:
+		value = OptionsManager.get_music_volume()
 	AudioServer.set_bus_volume_db(music_bus, linear_to_db(value))
 
 
-func set_sfx_volume(value):
+func set_sfx_volume(value = -1):
+	if value == -1:
+		value = OptionsManager.get_sfx_volume()
 	AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(value))
 
 
