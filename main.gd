@@ -10,6 +10,8 @@ extends Node3D
 @onready var pause_box = $PauseBox
 @onready var world_environment = $WorldEnvironment
 @onready var color_rect: ColorRect = $CanvasLayer/ColorRect
+@onready var pixelation = $CanvasLayer2/Pixelation
+
 
 var fire_cadence = 0.2
 var fire_cooldown = 0.0
@@ -20,6 +22,7 @@ var level_loaded = false
 var level_loading = false
 var thread: Thread
 var original_speed = true
+var pixel_size = 16.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -83,6 +86,8 @@ func restore_speed():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if level_loaded:
+		if pixel_size > 1.0:
+			pixelate(delta)
 		if Input.is_action_just_pressed("slow_speed"):
 			slow_speed()
 		elif Input.is_action_just_pressed("restore_speed"):
@@ -102,6 +107,13 @@ func _process(delta):
 		# so we do it in another thread
 		thread = Thread.new()
 		thread.start(Callable(self, "load_level").bind("tutorial"))
+
+
+func pixelate(delta):
+	pixelation.get_material().set_shader_parameter("pixel_size", pixel_size)
+	pixel_size -= delta * 4
+	if pixel_size <= 1.0:
+		pixel_size = 1.0
 
 
 func load_level(level_name):

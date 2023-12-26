@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpwr6jrfmfuwq"]
+[gd_scene load_steps=15 format=3 uid="uid://cpwr6jrfmfuwq"]
 
 [ext_resource type="PackedScene" uid="uid://01ldear5ava2" path="res://scenes/debug.tscn" id="1_omudf"]
 [ext_resource type="Script" path="res://main.gd" id="1_ot8d5"]
@@ -6,9 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://77c4ijjom8fn" path="res://scenes/player.tscn" id="3_uyk6t"]
 [ext_resource type="PackedScene" uid="uid://dhm8xxlddggo8" path="res://boundary.tscn" id="5_cp5lu"]
 [ext_resource type="FontFile" uid="uid://h2ic5jy5inj2" path="res://fonts/BrunoAceSC-Regular.ttf" id="6_ovioa"]
-[ext_resource type="Environment" uid="uid://bel0eg6fvqvo0" path="res://world.tres" id="6_sqdi0"]
 [ext_resource type="Script" path="res://pause_node.gd" id="8_e20bw"]
+[ext_resource type="Shader" path="res://shaders/pixelated.gdshader" id="9_46a6h"]
 [ext_resource type="Shader" path="res://shaders/shockwave.gdshader" id="9_c63d6"]
+[ext_resource type="Shader" path="res://shaders/starfield.gdshader" id="11_la8ou"]
+
+[sub_resource type="Environment" id="Environment_067s0"]
+background_mode = 3
+background_canvas_max_layer = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ndbdm"]
 shader = ExtResource("9_c63d6")
@@ -17,6 +22,13 @@ shader_parameter/power = 0.2
 shader_parameter/size = 0.0
 shader_parameter/sharpness = 0.1
 shader_parameter/thickness = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmcyg"]
+shader = ExtResource("9_46a6h")
+shader_parameter/pixel_size = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qqg22"]
+shader = ExtResource("11_la8ou")
 
 [node name="MainRoot" type="Node3D"]
 script = ExtResource("1_ot8d5")
@@ -43,13 +55,14 @@ offset_right = 1.0
 grow_vertical = 0
 
 [node name="HUD" parent="." instance=ExtResource("2_iv8f8")]
+layer = 3
 
 [node name="player" parent="." instance=ExtResource("3_uyk6t")]
 
 [node name="Boundary" parent="." instance=ExtResource("5_cp5lu")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("6_sqdi0")
+environment = SubResource("Environment_067s0")
 
 [node name="LoadingBox" type="MarginContainer" parent="."]
 anchors_preset = 8
@@ -102,9 +115,32 @@ process_mode = 2
 script = ExtResource("8_e20bw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_ndbdm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="Pixelation" type="ColorRect" parent="CanvasLayer2"]
+material = SubResource("ShaderMaterial_jmcyg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Starfield" type="ColorRect" parent="CanvasLayer3"]
+material = SubResource("ShaderMaterial_qqg22")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
