@@ -22,7 +22,7 @@ func set_boss_values(boss):
 func tween_property(element, property, value):
 	if value != element.get(property):
 		var tween = get_tree().create_tween()
-		tween.tween_property(element, "value", value, 1)
+		tween.tween_property(element, property, value, 1)
 
 
 func show_boss_section():
