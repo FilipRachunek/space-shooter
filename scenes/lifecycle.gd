@@ -39,10 +39,10 @@ func init(root_node, enemy, _spawn, _timeline):
 	current_rotation = spawn.rotation
 	if spawn.has("target"):
 		target = spawn.target
-	connect("enemy_spawned", Callable(root_node, "_on_enemy_spawned"))
-	connect("enemy_destroyed", Callable(root_node, "_on_enemy_destroyed"))
-	connect("bullet_hit", Callable(root_node, "_on_show_hit_effect"))
-	connect("weapon_fired", Callable(root_node, "_on_weapon_fired"))
+	enemy_spawned.connect(Callable(root_node, "_on_enemy_spawned"))
+	enemy_destroyed.connect(Callable(root_node, "_on_enemy_destroyed"))
+	bullet_hit.connect(Callable(root_node, "_on_show_hit_effect"))
+	weapon_fired.connect(Callable(root_node, "_on_weapon_fired"))
 
 
 func process(enemy, delta):
