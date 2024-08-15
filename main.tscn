@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cpwr6jrfmfuwq"]
+[gd_scene load_steps=13 format=3 uid="uid://cpwr6jrfmfuwq"]
 
 [ext_resource type="PackedScene" uid="uid://01ldear5ava2" path="res://scenes/debug.tscn" id="1_omudf"]
 [ext_resource type="Script" path="res://main.gd" id="1_ot8d5"]
@@ -9,11 +9,10 @@
 [ext_resource type="Script" path="res://pause_node.gd" id="8_e20bw"]
 [ext_resource type="Shader" path="res://shaders/pixelated.gdshader" id="9_46a6h"]
 [ext_resource type="Shader" path="res://shaders/shockwave.gdshader" id="9_c63d6"]
-[ext_resource type="Shader" path="res://shaders/starfield.gdshader" id="11_la8ou"]
 
 [sub_resource type="Environment" id="Environment_067s0"]
-background_mode = 3
-background_canvas_max_layer = 2
+background_mode = 1
+background_canvas_max_layer = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ndbdm"]
 shader = ExtResource("9_c63d6")
@@ -26,9 +25,6 @@ shader_parameter/thickness = 0.1
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jmcyg"]
 shader = ExtResource("9_46a6h")
 shader_parameter/pixel_size = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qqg22"]
-shader = ExtResource("11_la8ou")
 
 [node name="MainRoot" type="Node3D"]
 script = ExtResource("1_ot8d5")
@@ -50,8 +46,8 @@ fov = 30.0
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -31.0
-offset_right = 1.0
+offset_top = -367.0
+offset_right = 295.0
 grow_vertical = 0
 
 [node name="HUD" parent="." instance=ExtResource("2_iv8f8")]
@@ -130,17 +126,6 @@ layer = 3
 
 [node name="Pixelation" type="ColorRect" parent="CanvasLayer2"]
 material = SubResource("ShaderMaterial_jmcyg")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CanvasLayer3" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="Starfield" type="ColorRect" parent="CanvasLayer3"]
-material = SubResource("ShaderMaterial_qqg22")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
