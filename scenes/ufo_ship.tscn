@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=4 uid="uid://uo0egdx8tmts"]
 
-[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_glfqb"]
+[ext_resource type="Script" uid="uid://dgim23q2vf3tx" path="res://scenes/enemy.gd" id="1_glfqb"]
 [ext_resource type="Texture2D" uid="uid://cq1iek3l0yak8" path="res://models/ufo_ship_ufo1.png" id="2_jdv3p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0q21n"]

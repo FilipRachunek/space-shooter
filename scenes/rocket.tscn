@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=4 uid="uid://b0ohc5uunmo75"]
 
-[ext_resource type="Script" path="res://scenes/bullet.gd" id="1_cc62y"]
+[ext_resource type="Script" uid="uid://dc3wj7u12cfhd" path="res://scenes/bullet.gd" id="1_cc62y"]
 [ext_resource type="Material" path="res://materials/shiny_metal.tres" id="2_g2t2u"]
-[ext_resource type="Script" path="res://scenes/bullet_trail.gd" id="3_83i5a"]
+[ext_resource type="Script" uid="uid://hukav5jsi5jo" path="res://scenes/bullet_trail.gd" id="3_83i5a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w156w"]
 

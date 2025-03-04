@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b1ww0a0svv2et"]
 
-[ext_resource type="Script" path="res://settings.gd" id="1_w7t5w"]
+[ext_resource type="Script" uid="uid://cvyh58jesvjur" path="res://settings.gd" id="1_w7t5w"]
 [ext_resource type="Environment" uid="uid://bel0eg6fvqvo0" path="res://world.tres" id="2_rxc6r"]
 [ext_resource type="FontFile" uid="uid://h2ic5jy5inj2" path="res://fonts/BrunoAceSC-Regular.ttf" id="3_pdjoo"]
 [ext_resource type="PackedScene" uid="uid://crv3ny1ca5uio" path="res://scenes/asteroid.tscn" id="5_wmwyg"]

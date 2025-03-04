@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4ktx8n15hqq1"]
 
-[ext_resource type="Script" path="res://key_binding.gd" id="1_hvgun"]
+[ext_resource type="Script" uid="uid://dvitdysgfjgjg" path="res://key_binding.gd" id="1_hvgun"]
 [ext_resource type="Environment" uid="uid://bel0eg6fvqvo0" path="res://world.tres" id="2_qjyyr"]
 [ext_resource type="FontFile" uid="uid://h2ic5jy5inj2" path="res://fonts/BrunoAceSC-Regular.ttf" id="3_1iwxw"]
-[ext_resource type="Script" path="res://control_button.gd" id="4_a7vnf"]
+[ext_resource type="Script" uid="uid://bxjeo1wof0w4n" path="res://control_button.gd" id="4_a7vnf"]
 
 [node name="key_binding" type="Node3D"]
 script = ExtResource("1_hvgun")

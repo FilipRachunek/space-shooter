@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=4 uid="uid://r57gxh218g25"]
 
-[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_32od1"]
+[ext_resource type="Script" uid="uid://dgim23q2vf3tx" path="res://scenes/enemy.gd" id="1_32od1"]
 [ext_resource type="Material" path="res://materials/rusty_metal.tres" id="1_57k1a"]
 [ext_resource type="Material" path="res://materials/shiny_metal.tres" id="2_vcnrv"]
 [ext_resource type="Material" path="res://materials/metallic.tres" id="3_6m3da"]

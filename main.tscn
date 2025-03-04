@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://cpwr6jrfmfuwq"]
 
 [ext_resource type="PackedScene" uid="uid://01ldear5ava2" path="res://scenes/debug.tscn" id="1_omudf"]
-[ext_resource type="Script" path="res://main.gd" id="1_ot8d5"]
+[ext_resource type="Script" uid="uid://r55v75lmnl7v" path="res://main.gd" id="1_ot8d5"]
 [ext_resource type="PackedScene" uid="uid://befituamqu5km" path="res://scenes/HUD.tscn" id="2_iv8f8"]
 [ext_resource type="PackedScene" uid="uid://77c4ijjom8fn" path="res://scenes/player.tscn" id="3_uyk6t"]
 [ext_resource type="PackedScene" uid="uid://dhm8xxlddggo8" path="res://boundary.tscn" id="5_cp5lu"]
 [ext_resource type="FontFile" uid="uid://h2ic5jy5inj2" path="res://fonts/BrunoAceSC-Regular.ttf" id="6_ovioa"]
-[ext_resource type="Script" path="res://pause_node.gd" id="8_e20bw"]
-[ext_resource type="Shader" path="res://shaders/pixelated.gdshader" id="9_46a6h"]
-[ext_resource type="Shader" path="res://shaders/shockwave.gdshader" id="9_c63d6"]
+[ext_resource type="Script" uid="uid://coos44n7kbr0h" path="res://pause_node.gd" id="8_e20bw"]
+[ext_resource type="Shader" uid="uid://blihf2ys6y6sc" path="res://shaders/pixelated.gdshader" id="9_46a6h"]
+[ext_resource type="Shader" uid="uid://eldq5qx8w6bk" path="res://shaders/shockwave.gdshader" id="9_c63d6"]
 
 [sub_resource type="Environment" id="Environment_067s0"]
 background_mode = 1

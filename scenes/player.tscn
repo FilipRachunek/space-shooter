@@ -1,9 +1,9 @@
 [gd_scene load_steps=28 format=4 uid="uid://77c4ijjom8fn"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_3xfdo"]
+[ext_resource type="Script" uid="uid://el1fl44o75ew" path="res://scenes/player.gd" id="1_3xfdo"]
 [ext_resource type="Texture2D" uid="uid://2rtvrcyp3lr0" path="res://models/player_palette.png" id="1_s21bw"]
-[ext_resource type="Script" path="res://scenes/weapon.gd" id="3_xoa0m"]
-[ext_resource type="Shader" path="res://shaders/shield.gdshader" id="4_h2vv5"]
+[ext_resource type="Script" uid="uid://bfkbg7yfojy4k" path="res://scenes/weapon.gd" id="3_xoa0m"]
+[ext_resource type="Shader" uid="uid://dfmrvox6iw2w6" path="res://shaders/shield.gdshader" id="4_h2vv5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aar71"]
 resource_name = "Material"

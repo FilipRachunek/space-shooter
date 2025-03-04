@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://crv3ny1ca5uio"]
 
 [ext_resource type="Material" uid="uid://cao667aotu0nh" path="res://materials/asteroid.tres" id="1_6t3b4"]
-[ext_resource type="Script" path="res://scenes/enemy.gd" id="1_so2xr"]
+[ext_resource type="Script" uid="uid://dgim23q2vf3tx" path="res://scenes/enemy.gd" id="1_so2xr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jivcd"]
 

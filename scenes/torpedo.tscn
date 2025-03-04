@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cayjvr4ef71x2"]
 
 [ext_resource type="Material" path="res://materials/orange_cells.tres" id="1_cjkk0"]
-[ext_resource type="Script" path="res://scenes/ufo_bullet.gd" id="1_k1usc"]
+[ext_resource type="Script" uid="uid://d1x8aoo85al1p" path="res://scenes/ufo_bullet.gd" id="1_k1usc"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_nn6x0"]
 material = ExtResource("1_cjkk0")
